@@ -72,7 +72,7 @@ function findElement(arr, value) {
  *    findAllOccurrences([ true, 0, 1, 'true' ], true) => 1
  */
 function findAllOccurrences(arr, item) {
-  return arr.filter((el) => el === item).length;
+  return arr.filter((elem) => elem === item).length;
 }
 
 /**
@@ -88,7 +88,7 @@ function findAllOccurrences(arr, item) {
  *    removeFalsyValues([ false, 0, NaN, '', undefined ]) => [ ]
  */
 function removeFalsyValues(arr) {
-  return arr.filter((el) => Boolean(el) === true);
+  return arr.filter((elem) => elem);
 }
 
 /**
@@ -119,8 +119,10 @@ function getStringsLength(arr) {
  *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
-function getAverage(/* arr */) {
-  throw new Error('Not implemented');
+function getAverage(arr) {
+  if (!arr.length) return 0;
+  const average = arr.reduce((sum, item) => sum + item) / arr.length;
+  return Math.round(average * 100) / 100;
 }
 
 /**
@@ -133,8 +135,8 @@ function getAverage(/* arr */) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  return arr.every((str) => str.length === arr[0].length);
 }
 
 /**
@@ -148,8 +150,8 @@ function isSameLength(/* arr */) {
  *    isValueEqualsIndex([2, 1, 0, 4, 5]) => true
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
-function isValueEqualsIndex(/* arr */) {
-  throw new Error('Not implemented');
+function isValueEqualsIndex(arr) {
+  return arr.some((elem, i) => elem === i);
 }
 
 /**

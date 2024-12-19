@@ -20,8 +20,8 @@
  *    getIntervalArray(0, 100) => [ 0, 1, 2, ..., 100 ]
  *    getIntervalArray(3, 3) => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
 }
 
 /**
@@ -37,8 +37,11 @@ function getIntervalArray(/* start, end */) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  const maxLengthArr = arr1.length > arr2.length ? arr1 : arr2;
+  const minLengthArr = arr1.length > arr2.length ? arr2 : arr1;
+
+  return maxLengthArr.map((el, i) => el + (minLengthArr[i] || 0));
 }
 
 /**
@@ -119,10 +122,8 @@ function getStringsLength(arr) {
  *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
-function getAverage(arr) {
-  if (!arr.length) return 0;
-  const average = arr.reduce((sum, item) => sum + item) / arr.length;
-  return Number.isInteger(average) ? average : +average.toFixed(2);
+function getAverage(/* arr */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -195,8 +196,8 @@ function getHead(arr, n) {
  *    getTail([ 'a', 'b', 'c', 'd'], 3) => [ 'b', 'c', 'd' ]
  *    getTail([ 'a', 'b', 'c', 'd'], 0) => []
  */
-function getTail(/* arr, n */) {
-  throw new Error('Not implemented');
+function getTail(arr, n) {
+  return n > 0 ? arr.slice(-n) : [];
 }
 
 /**
@@ -409,8 +410,13 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  return numbers.reduce((indexes, el, i) => {
+    if (el % 2 !== 0) {
+      indexes.push(i);
+    }
+    return indexes;
+  }, []);
 }
 
 /**
